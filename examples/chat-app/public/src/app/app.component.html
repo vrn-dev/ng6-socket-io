@@ -1,0 +1,26 @@
+<h3>Single Socket</h3>
+<div>
+  <input type="text" #msgInput name="" value="">
+  <button (click)="sendMsg(msgInput.value)">Send</button>
+  <br>
+  <p>{{msg}}</p>
+</div>
+
+<hr>
+
+<h3>Multiple Sockets</h3>
+<div>
+  <p>port: 8988</p>
+  <input type="text" #msgInput1 name="" value="">
+  <button (click)="sendMsg1(msgInput1.value)">Send</button>
+  <br>
+  <p>{{msg1}}</p>
+</div>
+<br>
+<div>
+  <p>port: 8989</p>
+  <input type="text" #msgInput2 name="" value="">
+  <button (click)="sendMsg2(msgInput2.value)">Send</button>
+  <br>
+  <p>{{msg2}}</p>
+</div>
