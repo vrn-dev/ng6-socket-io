@@ -1,6 +1,6 @@
 {
   "name": "ng6-socket-io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/vrn-dev/ng6-socket-io",
   "description": "Socket.IO Module for Angular 6 and RxJS6",
   "license": "MIT",
@@ -15,9 +15,10 @@
   "bugs": {
     "url": "https://github.com/vrn-dev/ng6-socket-io/issues"
   },
-  "main": "index.js",
-  "module": "index.js",
-  "jsnext:main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "./index.d.ts",
+  "jsnext:main": "dist/index.js",
   "keywords": [
     "angular",
     "angular 6",

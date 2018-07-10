@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { SocketIoModule } from '../../../../../socket-io.module';
-import { SocketIoConfig } from '../../../../../socketIoConfig';
+import { SocketIoModule } from '../../../../../src/socket-io.module';
+import { SocketIoConfig } from '../../../../../src/socketIoConfig';
 import { Socket1Service } from './socket1.service';
 import { Socket2Service } from './socket2.service';
 

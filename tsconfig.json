@@ -15,9 +15,14 @@
     "outDir": "./dist",
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "baseUrl": "./"
   },
-  "files": [
-    "./index.ts"
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "examples/chat-app/**/*",
+    "spec/**/*"
   ]
 }

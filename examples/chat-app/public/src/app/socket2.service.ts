@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Socket } from '../../../../../index';
+import { Socket } from '../../../../../src/index';
 import { map } from 'rxjs/operators';
 
 @Injectable({

@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "socketIoConfig.js",
+  "sourceRoot": "",
+  "sources": [
+    "../src/socketIoConfig.ts"
+  ],
+  "names": [],
+  "mappings": ""
+}
