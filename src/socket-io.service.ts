@@ -1,4 +1,4 @@
-import { Inject } from '@angular/core';
+import { Inject, NgZone } from '@angular/core';
 
 import * as io from 'socket.io-client';
 
@@ -11,10 +11,13 @@ export class WrappedSocket {
   subscribersCounter = 0;
   ioSocket: any;
 
-  constructor(@Inject(SOCKET_CONFIG_TOKEN) config: SocketIoConfig) {
+  constructor(@Inject(SOCKET_CONFIG_TOKEN) config: SocketIoConfig,
+              ngZone: NgZone) {
     const url: string = config.url || '';
     const options: any = config.options || {};
-    this.ioSocket = io(url, options);
+    ngZone.runOutsideAngular(() => {
+      this.ioSocket = io(url, options);
+    });
   }
 
   on(eventName: string, callback: Function) {

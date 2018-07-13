@@ -4,6 +4,7 @@ require("es6-shim");
 var enableDestroy = require('server-destroy');
 var http = require('http');
 var IOSocket = require("../dist/socket-io.service.js").WrappedSocket;
+var ngZone = { runOutsideAngular: fn => fn() };
 var server, io;
 
 beforeEach(function () {
@@ -36,7 +37,7 @@ var socketURL = 'http://localhost:3000';
 describe("fromEvent", function () {
   it('should be equal', (done) => {
 
-    let socket = new IOSocket({ url: socketURL });
+    let socket = new IOSocket({ url: socketURL }, ngZone);
     socket.fromEvent("event").subscribe((data) => {
       expect(data).toEqual("someData");
       done();
@@ -48,7 +49,7 @@ describe("fromEvent", function () {
 describe("unsubcribe from Event", function () {
   it('should be equal', (done) => {
     var unsubcribeCallBack = jasmine.createSpy('unsubcribeCallBack');
-    let socket = new IOSocket({ url: socketURL });
+    let socket = new IOSocket({ url: socketURL }, ngZone);
     socket.fromEvent("thirdEvent").subscribe((data) => {
       expect(data).toEqual("someData");
       socket.on("thirdEvent", unsubcribeCallBack);
@@ -66,7 +67,7 @@ describe("unsubcribe from Event", function () {
 describe("on", function () {
   it('should be equal', (done) => {
 
-    let socket = new IOSocket({ url: socketURL });
+    let socket = new IOSocket({ url: socketURL }, ngZone);
     socket.on("event", (data) => {
       expect(data).toEqual("someData");
       done();
@@ -79,7 +80,7 @@ describe("on", function () {
 describe("once", function () {
   it('should be equal', (done) => {
 
-    let socket = new IOSocket({ url: socketURL });
+    let socket = new IOSocket({ url: socketURL }, ngZone);
     let count = 0;
     socket.once("event", (data) => {
       expect(data).toEqual("someData");
@@ -96,7 +97,7 @@ describe("once", function () {
 describe("emit", function () {
   it('should be equal', (done) => {
 
-    let socket = new IOSocket({ url: socketURL });
+    let socket = new IOSocket({ url: socketURL }, ngZone);
     let count = 0;
     socket.emit('otherEvent');
     socket.on("otherEvent", function (data) {
@@ -110,7 +111,7 @@ describe("emit", function () {
 describe("should remove the listener", function () {
   it('should be equal', (done) => {
     var removeListenerCallBack = jasmine.createSpy('removeListenerCallBack');
-    let socket = new IOSocket({ url: socketURL });
+    let socket = new IOSocket({ url: socketURL }, ngZone);
     let count = 0;
     socket.on("event", removeListenerCallBack);
     socket.removeListener('event');
@@ -124,7 +125,7 @@ describe("should remove the listener", function () {
 describe("removeAllListeners", function () {
   it('should remove all listeners ', (done) => {
     var removeAllListenersCallBack = jasmine.createSpy('removeAllListenersCallBack');
-    let socket = new IOSocket({ url: socketURL });
+    let socket = new IOSocket({ url: socketURL }, ngZone);
     let count = 0;
     socket.on("event", removeAllListenersCallBack);
     socket.on("secondEvent", removeAllListenersCallBack);
@@ -141,7 +142,7 @@ describe("removeAllListeners", function () {
 describe("disconnect", function () {
   it('should disconnect', (done) => {
     var disconnectCallBack = jasmine.createSpy('disconnectCallBack');
-    let socket = new IOSocket({ url: socketURL });
+    let socket = new IOSocket({ url: socketURL }, ngZone);
     let count = 0;
     socket.disconnect();
     socket.on("event", disconnectCallBack);
