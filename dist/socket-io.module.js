@@ -9,12 +9,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var socket_io_service_1 = require("./socket-io.service");
-
 /** Socket factory */
-function SocketFactory(config) {
-  return new socket_io_service_1.WrappedSocket(config);
+function SocketFactory(config, ngZone) {
+  return new socket_io_service_1.WrappedSocket(config, ngZone);
 }
-
 exports.SocketFactory = SocketFactory;
 exports.SOCKET_CONFIG_TOKEN = new core_1.InjectionToken('__SOCKET_IO_CONFIG__');
 var SocketIoModule = /** @class */ (function () {

@@ -1,3 +1,4 @@
+import { NgZone } from '@angular/core';
 import { SocketIoConfig } from './socketIoConfig';
 import { Observable } from 'rxjs';
 
@@ -5,7 +6,7 @@ export declare class WrappedSocket {
   subscribersCounter: number;
   ioSocket: any;
 
-  constructor(config: SocketIoConfig);
+  constructor(config: SocketIoConfig, ngZone: NgZone);
 
   on(eventName: string, callback: Function): void;
 

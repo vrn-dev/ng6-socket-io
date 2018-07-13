@@ -1,6 +1,6 @@
 {
   "name": "ng6-socket-io",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/vrn-dev/ng6-socket-io",
   "description": "Socket.IO Module for Angular 6 and RxJS6",
   "license": "MIT",

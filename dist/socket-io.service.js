@@ -21,11 +21,14 @@ var socket_io_module_1 = require("./socket-io.module");
 var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var WrappedSocket = /** @class */ (function () {
-  function WrappedSocket(config) {
+  function WrappedSocket(config, ngZone) {
+    var _this = this;
     this.subscribersCounter = 0;
     var url = config.url || '';
     var options = config.options || {};
-    this.ioSocket = io(url, options);
+    ngZone.runOutsideAngular(function () {
+      _this.ioSocket = io(url, options);
+    });
   }
 
   WrappedSocket.prototype.on = function (eventName, callback) {
@@ -72,7 +75,7 @@ var WrappedSocket = /** @class */ (function () {
   };
   WrappedSocket = __decorate([
     __param(0, core_1.Inject(socket_io_module_1.SOCKET_CONFIG_TOKEN)),
-    __metadata("design:paramtypes", [Object])
+    __metadata("design:paramtypes", [Object, core_1.NgZone])
   ], WrappedSocket);
   return WrappedSocket;
 }());
