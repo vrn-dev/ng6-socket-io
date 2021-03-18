@@ -1,3 +1,5 @@
+#### NO LONGER MAINTAINED
+
 # ng6-socket.io
 [![npm version](https://badge.fury.io/js/ng6-socket-io.svg)](https://www.npmjs.com/package/ng6-socket-io)
 
